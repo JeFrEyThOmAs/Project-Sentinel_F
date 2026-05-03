@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sensor Deployment | Command Center</title>
+    <title>Sensor Deployment | Heterogeneous</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -16,44 +17,29 @@
             border-top-color: #38bdf8;
             animation: spin 1s ease-in-out infinite;
         }
-        /* Glassmorphism & Neon Glows */
         .glass-panel {
-            background: rgba(15, 23, 42, 0.6); 
+            background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(148, 163, 184, 0.1);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
         }
         .neon-border {
-            border: 1px solid rgba(34, 211, 238, 0.3); 
-            box-shadow: 0 0 15px rgba(34, 211, 238, 0.1); 
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
         }
-        .status-optimal {
-            border-left: 4px solid #34d399; 
-            background: linear-gradient(90deg, rgba(6, 78, 59, 0.5) 0%, rgba(15, 23, 42, 0) 100%);
-        }
-        .status-error {
-            border-left: 4px solid #f87171; 
-            background: linear-gradient(90deg, rgba(127, 29, 29, 0.5) 0%, rgba(15, 23, 42, 0) 100%);
-        }
-        
-        /* Custom Scrollbar for Terminal look */
+        .status-optimal { border-left: 4px solid #34d399; background: linear-gradient(90deg, rgba(6, 78, 59, 0.5) 0%, rgba(15, 23, 42, 0) 100%); }
+        .status-error { border-left: 4px solid #f87171; background: linear-gradient(90deg, rgba(127, 29, 29, 0.5) 0%, rgba(15, 23, 42, 0) 100%); }
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #475569; }
-
         body {
-            /* Deep Space / Cyberpunk Background */
             background-color: #020617;
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
-                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            background-image: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%);
             color: #f1f5f9;
         }
     </style>
 </head>
-<body class="font-mono min-h-screen text-sm">
+<body class="font-mono min-h-screen text-sm pb-10">
 
     <div class="container mx-auto p-4 lg:p-6 max-w-7xl">
         
@@ -62,7 +48,7 @@
                 <h1 class="text-3xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
                     SENSOR//DEPLOYMENT
                 </h1>
-                <p class="text-slate-500 mt-1 uppercase tracking-widest text-xs">Geospatial Optimization System (Fixed Range)</p>
+                <p class="text-slate-500 mt-1 uppercase tracking-widest text-xs">Heterogeneous Asset Optimizer</p>
             </div>
             <div class="mt-4 md:mt-0 text-right">
                  <div class="text-xs text-slate-500">SYSTEM STATUS</div>
@@ -77,46 +63,54 @@
                 <form id="controls-form" class="glass-panel p-5 rounded-lg space-y-6">
                     <div>
                         <h2 class="text-xs font-bold uppercase text-blue-400 mb-3 border-b border-slate-800 pb-1">Area Parameters</h2>
-                        <div class="grid grid-cols-2 gap-3">
+                        <div class="grid grid-cols-3 gap-2">
                             <div class="group">
-                                <label class="block text-[10px] uppercase text-slate-500 mb-1 group-hover:text-cyan-400 transition-colors">Width (m)</label>
-                                <input type="number" id="width" value="50" class="w-full bg-slate-900/80 border border-slate-700 rounded p-2 text-cyan-50 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all">
+                                <label class="block text-[10px] uppercase text-slate-500 mb-1">Width(m)</label>
+                                <input type="number" id="width" value="50" class="w-full bg-slate-900 border border-slate-700 rounded p-1.5 text-cyan-50 focus:border-cyan-500 outline-none">
                             </div>
                             <div class="group">
-                                <label class="block text-[10px] uppercase text-slate-500 mb-1 group-hover:text-cyan-400 transition-colors">Height (m)</label>
-                                <input type="number" id="height" value="50" class="w-full bg-slate-900/80 border border-slate-700 rounded p-2 text-cyan-50 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none transition-all">
+                                <label class="block text-[10px] uppercase text-slate-500 mb-1">Height(m)</label>
+                                <input type="number" id="height" value="50" class="w-full bg-slate-900 border border-slate-700 rounded p-1.5 text-cyan-50 focus:border-cyan-500 outline-none">
+                            </div>
+                            <div class="group">
+                                <label class="block text-[10px] uppercase text-slate-500 mb-1">Density</label>
+                                <input type="number" id="density" value="2.0" step="0.1" class="w-full bg-slate-900 border border-slate-700 rounded p-1.5 text-cyan-50 focus:border-cyan-500 outline-none">
                             </div>
                         </div>
                     </div>
 
+                    <!-- NEW: SENSOR INVENTORY -->
                     <div>
-                        <h2 class="text-xs font-bold uppercase text-blue-400 mb-3 border-b border-slate-800 pb-1">Sensor Specs</h2>
-                        <div class="grid grid-cols-2 gap-3 mb-3">
-                            <div class="group">
-                                <label class="block text-[10px] uppercase text-slate-500 mb-1 group-hover:text-cyan-400 transition-colors">Max Units</label>
-                                <input type="number" id="maxSensors" value="10" class="w-full bg-slate-900/80 border border-slate-700 rounded p-2 text-cyan-50 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none">
-                            </div>
-                            <div class="group">
-                                <label class="block text-[10px] uppercase text-slate-500 mb-1 group-hover:text-cyan-400 transition-colors">Range (m)</label>
-                                <input type="number" id="sensorRange" value="7" step="0.1" class="w-full bg-slate-900/80 border border-slate-700 rounded p-2 text-cyan-50 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none">
-                            </div>
+                        <div class="flex justify-between items-end mb-3 border-b border-slate-800 pb-1">
+                            <h2 class="text-xs font-bold uppercase text-blue-400">Sensor Inventory</h2>
                         </div>
-                        <div class="group">
-                            <label class="block text-[10px] uppercase text-slate-500 mb-1 group-hover:text-cyan-400 transition-colors">Grid Density (Lower = More Precise)</label>
-                            <input type="number" id="density" value="2.0" step="0.1" class="w-full bg-slate-900/80 border border-slate-700 rounded p-2 text-cyan-50 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 outline-none">
+                        <div id="sensor-inventory-list" class="space-y-2 mb-3 max-h-32 overflow-y-auto custom-scrollbar">
+                            <!-- Populated via JS -->
+                        </div>
+                        
+                        <div class="bg-slate-900/50 p-2 rounded border border-slate-800 space-y-2">
+                            <div class="grid grid-cols-2 gap-2">
+                                <input type="text" id="s_name" placeholder="Type Name" value="Scout" class="bg-slate-800 rounded p-1 text-xs outline-none text-white">
+                                <input type="color" id="s_color" value="#a855f7" class="bg-slate-800 w-full h-6 rounded cursor-pointer">
+                            </div>
+                            <div class="grid grid-cols-2 gap-2">
+                                <input type="number" id="s_qty" placeholder="Qty" value="5" class="bg-slate-800 text-center rounded p-1 text-xs outline-none text-white" title="Max Quantity">
+                                <input type="number" id="s_range" placeholder="Range" value="4" class="bg-slate-800 text-center rounded p-1 text-xs outline-none text-white" title="Range (m)">
+                            </div>
+                            <button type="button" id="add-sensor-btn" class="w-full bg-slate-800 hover:bg-slate-700 text-cyan-400 py-1 rounded text-[10px] font-bold uppercase tracking-wider transition-colors">
+                                + Add Sensor Type
+                            </button>
                         </div>
                     </div>
 
                     <div>
                         <h2 class="text-xs font-bold uppercase text-blue-400 mb-3 border-b border-slate-800 pb-1">Priority Targets</h2>
-                        <div id="priority-areas-list" class="space-y-2 mb-3 max-h-24 overflow-y-auto custom-scrollbar">
-                            </div>
-                        
+                        <div id="priority-areas-list" class="space-y-2 mb-3 max-h-24 overflow-y-auto custom-scrollbar"></div>
                         <div class="bg-slate-900/50 p-2 rounded border border-slate-800">
                             <div class="grid grid-cols-3 gap-2">
-                                <input type="number" id="pa_x" placeholder="X" value="25" class="bg-slate-800 text-center rounded p-1 text-xs outline-none focus:bg-slate-700 text-white">
-                                <input type="number" id="pa_y" placeholder="Y" value="25" class="bg-slate-800 text-center rounded p-1 text-xs outline-none focus:bg-slate-700 text-white">
-                                <input type="number" id="pa_r" placeholder="R" value="5" class="bg-slate-800 text-center rounded p-1 text-xs outline-none focus:bg-slate-700 text-white">
+                                <input type="number" id="pa_x" placeholder="X" value="25" class="bg-slate-800 text-center rounded p-1 text-xs outline-none text-white">
+                                <input type="number" id="pa_y" placeholder="Y" value="25" class="bg-slate-800 text-center rounded p-1 text-xs outline-none text-white">
+                                <input type="number" id="pa_r" placeholder="R" value="5" class="bg-slate-800 text-center rounded p-1 text-xs outline-none text-white">
                             </div>
                             <button type="button" id="add-area-btn" class="mt-2 w-full bg-slate-800 hover:bg-slate-700 text-cyan-400 py-1 rounded text-[10px] font-bold uppercase tracking-wider transition-colors">
                                 + Add Target Zone
@@ -124,18 +118,12 @@
                         </div>
                     </div>
 
-                    <button type="submit" id="submit-btn" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white py-3 rounded shadow-lg shadow-cyan-900/20 flex items-center justify-center gap-3 transition-all active:scale-95 group">
+                    <button type="submit" id="submit-btn" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white py-3 rounded shadow-lg flex items-center justify-center gap-3 transition-all active:scale-95">
                         <span id="submit-btn-text" class="font-bold tracking-wider">INITIATE OPTIMIZATION</span>
                         <div id="submit-spinner" class="spinner hidden"></div>
                     </button>
                 </form>
 
-                <div class="glass-panel p-4 rounded-lg flex flex-col h-48">
-                    <h3 class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-2 border-b border-slate-800 pb-1">Deployed Asset Coordinates</h3>
-                    <div id="coordinates-list" class="flex-1 overflow-y-auto custom-scrollbar space-y-1">
-                        <p class="text-slate-600 italic text-xs pt-2">Waiting for deployment data...</p>
-                    </div>
-                </div>
             </div>
 
             <div class="lg:w-2/3 flex flex-col gap-5">
@@ -154,23 +142,26 @@
                 <div id="viz-container" class="w-full glass-panel rounded-lg p-1 relative neon-border" style="min-height: 400px;">
                     <div class="absolute inset-0 pointer-events-none border border-cyan-900/30 rounded-lg z-10"></div>
                     <svg id="viz-svg" class="w-full h-full rounded bg-slate-900/50"></svg>
-                    
                     <div class="absolute bottom-3 right-3 text-[10px] text-slate-600 font-mono z-20 bg-slate-900/80 px-2 py-1 rounded border border-slate-800">
-                        LIVE_FEED // SCALE 1:1
+                        HETEROGENEOUS_FEED // SCALE 1:1
                     </div>
                 </div>
 
-                <div class="glass-panel p-4 rounded-lg flex flex-col h-56">
-                    <div class="flex justify-between items-center mb-2 border-b border-slate-800 pb-1">
-                        <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-400">System Log / Terminal</h3>
-                        <span class="flex h-2 w-2 relative">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-                        </span>
+                <div class="grid md:grid-cols-2 gap-4 h-56">
+                    <div class="glass-panel p-4 rounded-lg flex flex-col h-full">
+                        <div class="flex justify-between items-center mb-2 border-b border-slate-800 pb-1">
+                            <h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-400">System Log / Terminal</h3>
+                        </div>
+                        <div id="mission-logs" class="flex-1 bg-[#0a0f1c] rounded p-2 overflow-y-auto custom-scrollbar font-mono text-xs space-y-1 border border-slate-800/50">
+                            <p class="text-slate-600">> System Ready.</p>
+                        </div>
                     </div>
-                    <div id="mission-logs" class="flex-1 bg-[#0a0f1c] rounded p-3 overflow-y-auto custom-scrollbar font-mono text-xs leading-relaxed space-y-1 border border-slate-800/50">
-                        <p class="text-slate-600">> System Ready.</p>
-                        <p class="text-slate-600">> Waiting for input...</p>
+
+                    <div class="glass-panel p-4 rounded-lg flex flex-col h-full">
+                        <h3 class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-2 border-b border-slate-800 pb-1">Deployed Asset Coordinates</h3>
+                        <div id="coordinates-list" class="flex-1 overflow-y-auto custom-scrollbar space-y-1 pr-2">
+                            <p class="text-slate-600 italic text-xs pt-2">Waiting for deployment data...</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -179,11 +170,17 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Initial State setup
             let priorityAreas = [{ center: [15, 35], radius: 8 }, { center: [40, 15], radius: 10 }];
-            let isLoading = false;
             
-            // --- THE FIX: Absolute URL pointing to Flask ---
-            const API_URL = 'http://127.0.0.1:5000/api/optimize';
+            // Multiple Sensor Types without manual costs
+            let sensorTypes = [
+                { name: "Standard", range: 6, max_qty: 10, color: "#3b82f6" }, // Blue
+                { name: "Long-Range", range: 12, max_qty: 2, color: "#f59e0b" }  // Orange
+            ];
+
+            let isLoading = false;
+            const API_URL = '/api/optimize';
 
             const ui = {
                 form: document.getElementById('controls-form'),
@@ -191,6 +188,7 @@
                 btnText: document.getElementById('submit-btn-text'),
                 spinner: document.getElementById('submit-spinner'),
                 areaList: document.getElementById('priority-areas-list'),
+                sensorList: document.getElementById('sensor-inventory-list'),
                 svg: document.getElementById('viz-svg'),
                 vizContainer: document.getElementById('viz-container'),
                 logs: document.getElementById('mission-logs'),
@@ -203,23 +201,41 @@
                 inputs: {
                     w: document.getElementById('width'),
                     h: document.getElementById('height'),
-                    max: document.getElementById('maxSensors'),
-                    range: document.getElementById('sensorRange'),
                     dens: document.getElementById('density'),
-                    px: document.getElementById('pa_x'),
-                    py: document.getElementById('pa_y'),
-                    pr: document.getElementById('pa_r')
+                    px: document.getElementById('pa_x'), py: document.getElementById('pa_y'), pr: document.getElementById('pa_r'),
+                    sn: document.getElementById('s_name'), sq: document.getElementById('s_qty'), sr: document.getElementById('s_range'), scolor: document.getElementById('s_color')
                 }
             };
+
+            // --- UI Rendering ---
+
+            function renderSensorTypes() {
+                ui.sensorList.innerHTML = '';
+                sensorTypes.forEach((sensor, idx) => {
+                    const el = document.createElement('div');
+                    el.className = 'flex items-center justify-between p-2 bg-slate-800/40 rounded border border-slate-700/50 hover:border-slate-600 group';
+                    el.innerHTML = `
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full shadow-lg" style="background-color: ${sensor.color}; box-shadow: 0 0 8px ${sensor.color}66"></div>
+                            <div class="text-[10px] font-mono text-slate-300 group-hover:text-white">
+                                <span class="font-bold">${sensor.name}</span> <br>
+                                <span class="text-slate-500">QTY:${sensor.max_qty} | RNG:${sensor.range}</span>
+                            </div>
+                        </div>
+                        <button type="button" data-index="${idx}" class="remove-sensor-btn text-slate-600 hover:text-red-400 font-bold px-2">×</button>
+                    `;
+                    ui.sensorList.appendChild(el);
+                });
+            }
 
             function renderPriorityAreas() {
                 ui.areaList.innerHTML = '';
                 priorityAreas.forEach((area, idx) => {
                     const el = document.createElement('div');
-                    el.className = 'flex items-center justify-between p-2 bg-slate-800/40 rounded border border-slate-700/50 hover:border-slate-600 transition-colors group';
+                    el.className = 'flex items-center justify-between p-2 bg-slate-800/40 rounded border border-slate-700/50 hover:border-slate-600 group';
                     el.innerHTML = `
-                        <span class="text-[10px] font-mono text-slate-400 group-hover:text-slate-200 transition-colors">ZONE_${String(idx+1).padStart(2,'0')} [${area.center}] R:${area.radius}</span>
-                        <button type="button" data-index="${idx}" class="remove-area-btn text-slate-600 hover:text-red-400 font-bold px-2 transition-colors">×</button>
+                        <span class="text-[10px] font-mono text-slate-400 group-hover:text-slate-200">ZONE_${String(idx+1).padStart(2,'0')} [${area.center}] R:${area.radius}</span>
+                        <button type="button" data-index="${idx}" class="remove-area-btn text-slate-600 hover:text-red-400 font-bold px-2">×</button>
                     `;
                     ui.areaList.appendChild(el);
                 });
@@ -237,7 +253,6 @@
 
             function updateResultsBanner(result, isError=false) {
                 ui.banner.classList.remove('hidden', 'status-optimal', 'status-error');
-                
                 if (isError) {
                     ui.banner.classList.add('status-error');
                     ui.status.innerText = "OPTIMIZATION FAILED";
@@ -251,12 +266,9 @@
                     ui.status.className = "text-lg font-bold text-emerald-400";
                     
                     const totalTargets = result.coveredSubTargets.length + result.uncoveredSubTargets.length;
-                    const coveredTargets = result.coveredSubTargets.length;
-                    const sensorCount = result.placedSensors.length;
-
-                    ui.summary.innerText = `Deployed ${sensorCount} sensors to cover ${coveredTargets} out of ${totalTargets} targets.`;
+                    ui.summary.innerText = `Deployed ${result.placedSensors.length} mixed sensors to cover ${result.coveredSubTargets.length} / ${totalTargets} targets.`;
                     
-                    const pct = totalTargets > 0 ? Math.round((coveredTargets / totalTargets) * 100) : 0;
+                    const pct = totalTargets > 0 ? Math.round((result.coveredSubTargets.length / totalTargets) * 100) : 0;
                     ui.metric.innerText = `${pct}%`;
                     ui.metric.className = "text-2xl font-mono text-emerald-400";
                 }
@@ -270,10 +282,13 @@
                 }
                 sensors.forEach((s, i) => {
                     const row = document.createElement('div');
-                    row.className = 'flex justify-between items-center border-b border-slate-800 pb-1 pt-1 hover:bg-slate-800/50 px-1 rounded transition-colors';
+                    row.className = 'flex justify-between items-center border-b border-slate-800 pb-1 pt-1 hover:bg-slate-800/50 px-1 rounded';
                     row.innerHTML = `
-                        <span class="text-[10px] text-cyan-600 font-bold">UNIT_${String(i+1).padStart(2,'0')}</span> 
-                        <span class="text-[10px] font-mono text-slate-300">X:${s[0].toFixed(1)} / Y:${s[1].toFixed(1)}</span>
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full" style="background-color: ${s.color}"></span>
+                            <span class="text-[10px] text-cyan-500 font-bold">${s.type.toUpperCase()}_${String(i+1).padStart(2,'0')}</span>
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-300">X:${s.x.toFixed(1)} / Y:${s.y.toFixed(1)}</span>
                     `;
                     ui.coords.appendChild(row);
                 });
@@ -282,7 +297,6 @@
             function renderVisualization(results = null) {
                 const w = parseFloat(ui.inputs.w.value) || 50;
                 const h = parseFloat(ui.inputs.h.value) || 50;
-                const range = parseFloat(ui.inputs.range.value) || 7;
                 const yFlip = (y) => h - y;
                 
                 ui.svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
@@ -311,38 +325,46 @@
                         svg += `<circle cx="${x}" cy="${yFlip(y)}" r="0.25" fill="#334155" />`;
                     });
                     
-                    results.placedSensors.forEach(([x, y]) => {
-                        svg += `<circle cx="${x}" cy="${yFlip(y)}" r="${range}" 
-                                fill="rgba(99, 102, 241, 0.1)" stroke="#6366f1" stroke-width="0.3" opacity="0.8" />`;
+                    // Draw colored coverage rings based on sensor type
+                    results.placedSensors.forEach(s => {
+                        svg += `<circle cx="${s.x}" cy="${yFlip(s.y)}" r="${s.range}" 
+                                fill="${s.color}15" stroke="${s.color}" stroke-width="0.3" opacity="0.8" />`;
                     });
 
                     results.coveredSubTargets.forEach(([x, y]) => {
                         svg += `<circle cx="${x}" cy="${yFlip(y)}" r="0.35" fill="#22d3ee" filter="url(#glow)" />`;
                     });
 
-                    results.placedSensors.forEach(([x, y]) => {
-                        svg += `<circle cx="${x}" cy="${yFlip(y)}" r="0.6" fill="#ffffff" stroke="#3b82f6" stroke-width="0.2" filter="url(#glow)"/>`;
+                    // Colored core sensor points
+                    results.placedSensors.forEach(s => {
+                        svg += `<circle cx="${s.x}" cy="${yFlip(s.y)}" r="0.6" fill="${s.color}" stroke="#ffffff" stroke-width="0.2" filter="url(#glow)"/>`;
                     });
                 }
                 ui.svg.innerHTML = svg;
             }
 
+            // --- Interaction Handlers ---
+            
             async function handleSubmit(e) {
                 e.preventDefault();
                 if (isLoading) return;
                 
+                if (sensorTypes.length === 0) {
+                    alert("Please add at least one sensor type to the inventory.");
+                    return;
+                }
+
                 setLoading(true);
                 ui.logs.innerHTML = ''; 
                 ui.banner.classList.add('hidden');
-                appendLog("Initializing Secure Connection...", "highlight");
+                appendLog("Connecting to ILP Optimization Engine...", "highlight");
 
                 const payload = {
                     width: parseFloat(ui.inputs.w.value),
                     height: parseFloat(ui.inputs.h.value),
-                    max_sensors: parseInt(ui.inputs.max.value),
-                    sensor_range: parseFloat(ui.inputs.range.value),
                     density: parseFloat(ui.inputs.dens.value),
-                    priority_areas: priorityAreas
+                    priority_areas: priorityAreas,
+                    sensor_types: sensorTypes // Sending the array of sensors
                 };
 
                 try {
@@ -356,7 +378,7 @@
                     if (result.logs) result.logs.forEach(l => appendLog(l));
                     if (!response.ok) throw new Error(result.error || "Unknown Error");
 
-                    appendLog("Visualization Data: RECEIVED", "success");
+                    appendLog("Map Telemetry: RECEIVED", "success");
                     renderVisualization(result);
                     updateCoordsList(result.placedSensors);
                     updateResultsBanner(result); 
@@ -372,10 +394,11 @@
             function setLoading(l) {
                 isLoading = l;
                 ui.btn.disabled = l;
-                ui.btnText.textContent = l ? "PROCESSING..." : "INITIATE OPTIMIZATION";
+                ui.btnText.textContent = l ? "COMPUTING MATRIX..." : "INITIATE OPTIMIZATION";
                 ui.spinner.classList.toggle('hidden', !l);
             }
 
+            // Target Add/Remove
             document.getElementById('add-area-btn').addEventListener('click', () => {
                 const x = parseFloat(ui.inputs.px.value), y = parseFloat(ui.inputs.py.value), r = parseFloat(ui.inputs.pr.value);
                 if (!isNaN(x) && !isNaN(y) && r > 0) {
@@ -383,11 +406,28 @@
                     renderPriorityAreas();
                 }
             });
-
             ui.areaList.addEventListener('click', (e) => {
                 if(e.target.classList.contains('remove-area-btn')) {
                     priorityAreas.splice(parseInt(e.target.dataset.index), 1);
                     renderPriorityAreas();
+                }
+            });
+
+            // Sensor Add/Remove
+            document.getElementById('add-sensor-btn').addEventListener('click', () => {
+                const n = ui.inputs.sn.value || "Custom";
+                const q = parseInt(ui.inputs.sq.value);
+                const r = parseFloat(ui.inputs.sr.value);
+                const col = ui.inputs.scolor.value;
+                if (!isNaN(q) && !isNaN(r)) {
+                    sensorTypes.push({ name: n, max_qty: q, range: r, color: col });
+                    renderSensorTypes();
+                }
+            });
+            ui.sensorList.addEventListener('click', (e) => {
+                if(e.target.classList.contains('remove-sensor-btn')) {
+                    sensorTypes.splice(parseInt(e.target.dataset.index), 1);
+                    renderSensorTypes();
                 }
             });
             
@@ -396,7 +436,8 @@
             ui.inputs.h.addEventListener('change', () => renderVisualization());
 
             renderPriorityAreas();
-            appendLog("System initialized. Standby for target acquisition.");
+            renderSensorTypes();
+            appendLog("System initialized. Heterogeneous matrix loaded.");
         });
     </script>
 </body>
